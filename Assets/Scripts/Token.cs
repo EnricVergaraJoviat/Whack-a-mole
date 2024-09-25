@@ -26,7 +26,15 @@ public class Token : MonoBehaviour
     {
         if (sphere.activeSelf)
         {
-            Debug.Log("Han fet click sobre el talp");    
+            if (sphere.GetComponent<MeshRenderer>().material.color == Color.green)
+            {
+                Debug.Log("Han fet click sobre el talp (+1)");
+            }
+            else
+            {
+                Debug.Log("Han fet click sobre el talp (-1)");
+            } 
+            sphere.SetActive(false);
         }
         
     }
@@ -41,11 +49,14 @@ public class Token : MonoBehaviour
         if (isRed)
         {
             Debug.Log("Han activat el token amb vermell");
-            Invoke("DeactivateSpehere", 2.0f);
+            sphere.GetComponent<MeshRenderer>().material.color = Color.red;
         }
         else
         {
             Debug.Log("Han activat el token amb verd");
+            sphere.GetComponent<MeshRenderer>().material.color = Color.green;
         }
+        
+        Invoke("DeactivateSpehere", 2.0f);
     }
 }

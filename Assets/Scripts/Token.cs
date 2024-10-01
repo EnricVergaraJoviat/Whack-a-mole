@@ -12,7 +12,6 @@ public class Token : MonoBehaviour
     void Start()
     {
         sphere.SetActive(false);
-        
         gm = GameObject.FindGameObjectWithTag("GameController");
     }
 
@@ -29,10 +28,12 @@ public class Token : MonoBehaviour
             if (sphere.GetComponent<MeshRenderer>().material.color == Color.green)
             {
                 Debug.Log("Han fet click sobre el talp (+1)");
+                gm.GetComponent<GameManager>().AddScore(+1);
             }
             else
             {
                 Debug.Log("Han fet click sobre el talp (-1)");
+                gm.GetComponent<GameManager>().AddScore(-1);
             } 
             sphere.SetActive(false);
         }

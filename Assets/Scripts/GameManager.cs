@@ -8,14 +8,21 @@ using Random = System.Random;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI lbl_Score;
+    public TextMeshProUGUI lbl_Countdown;
+    public TextMeshProUGUI lbl_GameFinished;
+    
     
     public GameObject[] tokens;
     private int score;
+    private float timer;
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
+        timer = 4.0f;
         lbl_Score.text = "Score: 0";
+        lbl_Countdown.text = "Time: " + timer;
+        lbl_GameFinished.text = "";
     }
 
 
@@ -32,9 +39,15 @@ public class GameManager : MonoBehaviour
                 isRed = false;    
             }
             t.ActivateToken(isRed);
-            
         }
-       
+
+        timer -= Time.deltaTime;
+        lbl_Countdown.text = "Time: " + timer;
+        if (timer <= 0.0f)
+        {
+            lbl_GameFinished.text = "Game Finished";
+        }
+
     }
 
     public void AddScore(int value)

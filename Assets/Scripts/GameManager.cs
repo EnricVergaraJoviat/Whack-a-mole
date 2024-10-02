@@ -15,9 +15,12 @@ public class GameManager : MonoBehaviour
     public GameObject[] tokens;
     private int score;
     private float timer;
+    private bool gameFinished = false;
+    
     // Start is called before the first frame update
     void Start()
     {
+        gameFinished = false;
         score = 0;
         timer = 4.0f;
         lbl_Score.text = "Score: 0";
@@ -28,6 +31,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (gameFinished)
+        {
+            return;
+        }
+        
         if (Input.GetKeyDown(KeyCode.A))
         {
             int index = UnityEngine.Random.Range(0, 25);
@@ -42,10 +50,15 @@ public class GameManager : MonoBehaviour
         }
 
         timer -= Time.deltaTime;
-        lbl_Countdown.text = "Time: " + timer;
+        lbl_Countdown.text = "Time: " + (int)timer;
         if (timer <= 0.0f)
         {
             lbl_GameFinished.text = "Game Finished";
+            gameFinished = true;
+            foreach (var token in tokens)
+            {
+                Destroy(token);
+            }
         }
 
     }

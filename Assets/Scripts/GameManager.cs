@@ -72,9 +72,16 @@ public class GameManager : MonoBehaviour
         int numOfMolesToBeActivated = UnityEngine.Random.Range(minNumberOfMoles, maxNumberOfMoles+1);
         for (int i = 0; i < numOfMolesToBeActivated; i++)
         {
-            int index = UnityEngine.Random.Range(0, 25);
+            Token t = null;
+            do
+            {
+                int index = UnityEngine.Random.Range(0, 25);
+                t = tokens[index].GetComponent<Token>();
+            } while (t.IsActivatedToken());
+            
+            
             //Token t = tokens[0].GetComponent<Token>().ActivateToken(true);
-            Token t = tokens[index].GetComponent<Token>();
+            
             bool isRed = true;
             if (UnityEngine.Random.value <= 0.5f)
             {

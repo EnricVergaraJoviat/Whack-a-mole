@@ -60,4 +60,9 @@ public class Token : MonoBehaviour
         
         Invoke("DeactivateSpehere", 2.0f);
     }
+
+    public bool IsActivatedToken()
+    {
+        return sphere.activeSelf;
+    }
 }

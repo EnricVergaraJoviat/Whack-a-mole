@@ -1089,9 +1089,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b2c8b3d90c64ecfaef0a83956a40a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lbl_Score: {fileID: 1860327861}
-  lbl_Countdown: {fileID: 56073272}
-  lbl_GameFinished: {fileID: 171446042}
+  minTimeToAppear: 2
+  maxTimeToAppear: 5
+  minNumberOfMoles: 1
+  maxNumberOfMoles: 6
+  totalTime: 20
   tokens:
   - {fileID: 82005490}
   - {fileID: 94389608}
@@ -1118,6 +1120,9 @@ MonoBehaviour:
   - {fileID: 299489247}
   - {fileID: 1393935264}
   - {fileID: 1593477800}
+  lbl_Score: {fileID: 1860327861}
+  lbl_Countdown: {fileID: 56073272}
+  lbl_GameFinished: {fileID: 171446042}
 --- !u!4 &611175505
 Transform:
   m_ObjectHideFlags: 0
